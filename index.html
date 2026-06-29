@@ -3,6 +3,26 @@
 <head>
     <title>⚽ FIFA 2026 Prediction</title>
     <style>
+        <script>
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQCKtA41B5MQXYzuE07HJ-iiZBQpoJHpU6FyvGbGxMQjZ0KtaW_2zaBt6clWjn3kw/pub?output=csv")
+.then(response => response.text())
+.then(data => {
+    let rows = data.split("\n");
+    let table = "<table border='1' style='margin:auto;color:white;'>";
+    
+    rows.slice(1,6).forEach((row, index) => {
+        let cols = row.split(",");
+        table += `<tr>
+            <td>${index+1}</td>
+            <td>${cols[1]}</td>
+            <td>${cols[2]}</td>
+        </tr>`;
+    });
+
+    table += "</table>";
+    document.body.innerHTML += table;
+});
+</script>
         body {
             font-family: Arial;
             text-align: center;
